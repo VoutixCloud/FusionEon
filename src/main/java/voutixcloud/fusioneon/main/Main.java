@@ -10,7 +10,7 @@ package voutixcloud.fusioneon.main;
 public class Main {
     public static void main(String[] args) {
         // TODO: 25.02.2020 Application start
-        System.out.println("registered fusioneon start...");
+        System.out.println("registered FusionEon start...".toUpperCase());
 
     }
 }
