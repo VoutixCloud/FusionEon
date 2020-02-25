@@ -1,0 +1,46 @@
+apply plugin: 'com.github.johnrengelman.shadow'
+apply plugin: 'java'
+
+group 'voutixcloud.fusioneon'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+
+    maven {
+        url "https://plugins.gradle.org/m2/"
+    }
+}
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:5.2.0'
+    }
+}
+
+jar {
+    manifest {
+        attributes('Main-Class': 'voutixcloud.fusioneon.main.Main')
+    }
+}
+
+shadowJar {
+    baseName = "${project.name}-${project.version}-shadow (with libs)"
+    classifier = ''
+    archiveVersion = ''
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    implementation 'com.google.code.gson:gson:2.8.6'
+    shadow 'com.google.code.gson:gson:2.8.6'
+
+    implementation("com.google.guava:guava:28.2-jre")
+    shadow("com.google.guava:guava:28.2-jre")
+}
